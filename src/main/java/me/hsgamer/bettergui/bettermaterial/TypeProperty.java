@@ -17,7 +17,7 @@ public class TypeProperty extends ItemProperty<String, Optional<UMaterial>> {
 
   @Override
   public Optional<UMaterial> getParsed(Player player) {
-    String value = getValue();
+    String value = getValue().replace('-', '_').replace(' ', '_');
     value = getIcon().hasVariables(value) ? getIcon().setVariables(value, player) : value;
     return Optional.ofNullable(UMaterial.match(value));
   }
